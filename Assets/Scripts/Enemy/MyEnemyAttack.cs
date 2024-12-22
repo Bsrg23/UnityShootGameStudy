@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class MyEnemyAttack : MonoBehaviour
 {
+    public int AttackValue = 10;
 
+    //  攻击间隔时间
+    float time = 0f;
+    float timeBetweenBullets = 1f;
     // Update is called once per frame
     void Update()
     {
-        
+        time += Time.deltaTime;
     }
-    void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerStay(Collider other)
     {
-        Debug.Log("发生碰撞:"+collision.gameObject.name);
+
+        if (time >= timeBetweenBullets && other.gameObject.name == "Player")
+        {
+            time = 0f;
+            other.gameObject.GetComponent<MyPlayerHealth>().ReceiveDamage(AttackValue);
+        }
+       
     }
 
 }

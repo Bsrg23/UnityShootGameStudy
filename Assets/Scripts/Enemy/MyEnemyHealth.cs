@@ -69,6 +69,20 @@ public class MyEnemyHealth : MonoBehaviour
 
         //  消除碰撞盒
         capsuleCollider.isTrigger = true;
+        GetComponentInChildren<CapsuleCollider>().enabled = false;
+        //  循环遍历子组件 删除指定子组件
+        Transform transform;
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            if (gameObject.transform.GetChild(i).name == "AttackBox")
+            {
+                transform = gameObject.transform.GetChild(i);
+                GameObject.Destroy(transform.gameObject);
+                break;
+            }
+           
+        }
+
         //  取消物理效果
         GetComponent<Rigidbody>().isKinematic = true;
         //  禁用NavMeshAgent
