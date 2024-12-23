@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class DestoryObjectWithSound : MonoBehaviour
 {
-  public AudioClip sound;
-
+    public AudioClip sound;// “Ù∆µ
 
     private void OnDestroy()
     {
         if (sound != null)
         {
-            AudioSource.PlayClipAtPoint(sound,transform.position,1f);
+            AudioSource.PlayClipAtPoint(sound, Camera.main.transform.position,1f);
         }
     }
 }

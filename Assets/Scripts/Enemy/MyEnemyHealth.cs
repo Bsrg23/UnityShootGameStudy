@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class MyEnemyHealth : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class MyEnemyHealth : MonoBehaviour
 
     public bool isDeath = false;
     private bool IsSiking = false;
+
+    public Text Score;
 
     private void Awake()
     {
@@ -67,6 +70,9 @@ public class MyEnemyHealth : MonoBehaviour
         //  将受击音效 切换为 死亡音效
         audioSource.clip = DeathClip;
 
+        //  增加分数
+        GameObject Score = GameObject.Find("ScoreText");
+        Score.GetComponent<SoureCount>().ScoureAdd(1);
         //  消除碰撞盒
         capsuleCollider.isTrigger = true;
         GetComponentInChildren<CapsuleCollider>().enabled = false;

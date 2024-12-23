@@ -89,4 +89,8 @@ public class MyPlayerShooting : MonoBehaviour
             gunLine.SetPosition(1, transform.position + transform.forward * 100);// 未命中后子弹线条终点
         }
     }
+
+
+
+
 }
